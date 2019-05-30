@@ -1,0 +1,19 @@
+ul {
+  padding: 5px;
+  margin: 5px;
+  background: white;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.create-form {
+  padding: 5px;
+  margin: 5px;
+  background: yellow;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
