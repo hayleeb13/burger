@@ -1,26 +1,17 @@
-body {
-  text-align: center;
-  background-color: lightblue;
-}
-
-img {
-  width: 100px;
-  height: 100px;
-}
-
 li {
   padding: 5px;
   margin: 5px;
-  background-color: white;
+  background: #faebd7;
 }
 
 .label {
   font-weight: bold;
 }
 
-.create-form {
+.create-update-form {
   padding: 5px;
   margin: 5px;
+  background: aqua;
 }
 
 .form-group {
