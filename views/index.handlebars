@@ -1,21 +1,18 @@
-<img class="burgerimg" src="../public/assets/img/burger.jpg">
 <h1>Eat-Da-Burger!</h1>
 
-<ul>
+<li>>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=false}}
     {{/unless}}
   {{/each}}
-</ul>
+</li>
 
-<ul>
+<li>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block devoured=true}}
     {{/if}}
   {{/each}}
-</ul>
+</li>
 
 <form class="create-form">
 
@@ -25,4 +22,4 @@
 
   <button type="submit">Submit</button>
 </form>
-<h2>Enter a burger you want to eat and click the Submit button.</h2>
+<p>Enter a burger you want to eat and click the Submit button.</p>
