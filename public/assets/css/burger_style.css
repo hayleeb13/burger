@@ -3,26 +3,20 @@ body {
   background-color: lightblue;
 }
 
+p {
+  background-color: white;
+  width: 150px;
+  height: 75px;
+}
+
+.column{
+  padding: 5px;
+  width: 50%;
+  float: left;
+}
+
 img {
   width: 100px;
   height: 100px;
-}
-
-li {
-  padding: 5px;
-  margin: 5px;
-  background-color: white;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.create-form {
-  padding: 5px;
-  margin: 5px;
-}
-
-.form-group {
-  margin-bottom: 5px;
+  align-content: center;
 }

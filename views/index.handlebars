@@ -1,20 +1,50 @@
 <h1>Eat-Da-Burger!</h1>
 
-<ul>
-  {{#each burgers}}
-  <li>
-    <p>{{this.burger_name}}</p>
-    <button data-burger_name="{{this.burger_name}}" class="devoured">Devour!</button>
-  </li>
-  {{/each}}
-</ul>
+<div class="row">
+<div class="column">
+{{#each burgers}}
+  {{#unless devoured}}
+  <p>{{burger_name}}</p>
+  <button data-id="{{id}}" class="devour-button">Devour!</button>
+  {{/unless}}
+{{/each}}
+</div>
 
-<form class="create-form" action="/api/burgers" method="POST">
+<div class="column">
+{{#each burgers}}
+  {{#if devoured}}
+  <p>{{burger_name}}</p>
+  {{/if}}
+{{/each}}
+</div>
+</div>
 
+<div class="row">
+<form class="create-form">
   <div class="form-group">
-    <textarea id="bur" name="burger" rows="6" cols="40"></textarea>
+    <textarea id="burger" name="burger" rows="6" cols="30"></textarea>
   </div>
-
-  <button type="submit">Submit</button>
+  <button type="submit" id="submit">Submit</button>
 </form>
+
 <p>Enter a burger you want to eat and click the Submit button.</p>
+</div>
+
+<script type="text/javascript">
+  $("#submit").on("click", function (){
+    event.preventDefault();
+    var newBurger = {
+      "burger_name": $("#burger").val(),
+      "id": "",
+      "devoured": ""
+    };
+    $.ajax({
+      url: "/",
+      method: "POST",
+      data: newBurger,
+      dataType: "text"
+    }).then(function() {
+      console.log(newBurger);
+    })
+  });
+</script>

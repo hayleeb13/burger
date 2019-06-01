@@ -1,24 +1,30 @@
 var express = require("express");
-var burger = require("../models/burger.js");
+var orm = require("../config/orm.js");
 var router = express.Router();
+var app = express();
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 router.get("/", function(req, res) {
-  burger.selectAll(function(data) {
-    var hbsObject = {
-      burgers: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+  orm.selectAll(function(error, data) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.render("index", { burgers: data });
+    }
   });
 });
 
-router.post("/api/burgers", function(req, res) {
-  burger.insertOne([
-    "name", "devoured"
-  ], [
-    req.body.burger_name, req.body.devoured
-  ], function(result) {
-    res.json({ id: result.insertId });
+router.post("/", function(req, res) {
+  const newBurger = req.body;
+  orm.insertOne(newBurger, function(error) {
+    if (error) {
+      res.sendStatus(500);
+    } else {
+      res.json({newBurger: data});
+    }
   });
 });
 
